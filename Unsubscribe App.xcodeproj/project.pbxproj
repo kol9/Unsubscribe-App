@@ -3,19 +3,26 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5078E97021E190480C36CF75 /* libPods-Unsubscribe App.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F0F3D3B8642023668968A902 /* libPods-Unsubscribe App.a */; };
 		95175E24240BC52F005A778A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95175E23240BC52F005A778A /* AppDelegate.swift */; };
 		95175E26240BC52F005A778A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95175E25240BC52F005A778A /* SceneDelegate.swift */; };
 		95175E28240BC52F005A778A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95175E27240BC52F005A778A /* ViewController.swift */; };
 		95175E2B240BC52F005A778A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95175E29240BC52F005A778A /* Main.storyboard */; };
 		95175E2D240BC532005A778A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95175E2C240BC532005A778A /* Assets.xcassets */; };
 		95175E30240BC532005A778A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95175E2E240BC532005A778A /* LaunchScreen.storyboard */; };
+		95175E38240BCB30005A778A /* GroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95175E37240BCB30005A778A /* GroupCell.swift */; };
+		95745C03254AADEE00548A6F /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95745C02254AADEE00548A6F /* Group.swift */; };
+		95745C06254BD64200548A6F /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95745C05254BD64200548A6F /* Extension.swift */; };
+		95745C11254BE67900548A6F /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95745C10254BE67800548A6F /* ImageLoader.swift */; };
+		95745C14254BF4E400548A6F /* BottomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95745C13254BF4E400548A6F /* BottomViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3E4620EDECB547DBC7C88DB4 /* Pods-Unsubscribe App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unsubscribe App.debug.xcconfig"; path = "Target Support Files/Pods-Unsubscribe App/Pods-Unsubscribe App.debug.xcconfig"; sourceTree = "<group>"; };
 		95175E20240BC52F005A778A /* Unsubscribe App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Unsubscribe App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		95175E23240BC52F005A778A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		95175E25240BC52F005A778A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +31,13 @@
 		95175E2C240BC532005A778A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		95175E2F240BC532005A778A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		95175E31240BC532005A778A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		95175E37240BCB30005A778A /* GroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCell.swift; sourceTree = "<group>"; };
+		95745C02254AADEE00548A6F /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
+		95745C05254BD64200548A6F /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		95745C10254BE67800548A6F /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		95745C13254BF4E400548A6F /* BottomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomViewController.swift; sourceTree = "<group>"; };
+		AB2489B8BEE58262001FBFCE /* Pods-Unsubscribe App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unsubscribe App.release.xcconfig"; path = "Target Support Files/Pods-Unsubscribe App/Pods-Unsubscribe App.release.xcconfig"; sourceTree = "<group>"; };
+		F0F3D3B8642023668968A902 /* libPods-Unsubscribe App.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Unsubscribe App.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5078E97021E190480C36CF75 /* libPods-Unsubscribe App.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +57,8 @@
 			children = (
 				95175E22240BC52F005A778A /* Unsubscribe App */,
 				95175E21240BC52F005A778A /* Products */,
+				9D839EFAF876A59A647B5F49 /* Pods */,
+				EC3C87BB7E3B078BBD963E97 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -59,12 +76,34 @@
 				95175E23240BC52F005A778A /* AppDelegate.swift */,
 				95175E25240BC52F005A778A /* SceneDelegate.swift */,
 				95175E27240BC52F005A778A /* ViewController.swift */,
+				95745C13254BF4E400548A6F /* BottomViewController.swift */,
 				95175E29240BC52F005A778A /* Main.storyboard */,
 				95175E2C240BC532005A778A /* Assets.xcassets */,
 				95175E2E240BC532005A778A /* LaunchScreen.storyboard */,
 				95175E31240BC532005A778A /* Info.plist */,
+				95175E37240BCB30005A778A /* GroupCell.swift */,
+				95745C02254AADEE00548A6F /* Group.swift */,
+				95745C05254BD64200548A6F /* Extension.swift */,
+				95745C10254BE67800548A6F /* ImageLoader.swift */,
 			);
 			path = "Unsubscribe App";
+			sourceTree = "<group>";
+		};
+		9D839EFAF876A59A647B5F49 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3E4620EDECB547DBC7C88DB4 /* Pods-Unsubscribe App.debug.xcconfig */,
+				AB2489B8BEE58262001FBFCE /* Pods-Unsubscribe App.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		EC3C87BB7E3B078BBD963E97 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F0F3D3B8642023668968A902 /* libPods-Unsubscribe App.a */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +113,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 95175E34240BC532005A778A /* Build configuration list for PBXNativeTarget "Unsubscribe App" */;
 			buildPhases = (
+				52E05BC845EC4DAC50293C3D /* [CP] Check Pods Manifest.lock */,
 				95175E1C240BC52F005A778A /* Sources */,
 				95175E1D240BC52F005A778A /* Frameworks */,
 				95175E1E240BC52F005A778A /* Resources */,
+				A059B0E648367BCB2C716277 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -133,14 +174,61 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		52E05BC845EC4DAC50293C3D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Unsubscribe App-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A059B0E648367BCB2C716277 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Unsubscribe App/Pods-Unsubscribe App-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Unsubscribe App/Pods-Unsubscribe App-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Unsubscribe App/Pods-Unsubscribe App-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		95175E1C240BC52F005A778A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95745C11254BE67900548A6F /* ImageLoader.swift in Sources */,
 				95175E28240BC52F005A778A /* ViewController.swift in Sources */,
 				95175E24240BC52F005A778A /* AppDelegate.swift in Sources */,
 				95175E26240BC52F005A778A /* SceneDelegate.swift in Sources */,
+				95745C06254BD64200548A6F /* Extension.swift in Sources */,
+				95745C03254AADEE00548A6F /* Group.swift in Sources */,
+				95175E38240BCB30005A778A /* GroupCell.swift in Sources */,
+				95745C14254BF4E400548A6F /* BottomViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,11 +370,13 @@
 		};
 		95175E35240BC532005A778A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3E4620EDECB547DBC7C88DB4 /* Pods-Unsubscribe App.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 539DQNBLRW;
 				INFOPLIST_FILE = "Unsubscribe App/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -294,17 +384,19 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.vk.Unsubscribe-App";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		95175E36240BC532005A778A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AB2489B8BEE58262001FBFCE /* Pods-Unsubscribe App.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 539DQNBLRW;
 				INFOPLIST_FILE = "Unsubscribe App/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -312,7 +404,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.vk.Unsubscribe-App";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
