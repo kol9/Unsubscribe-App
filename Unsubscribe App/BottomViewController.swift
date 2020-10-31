@@ -16,7 +16,7 @@ class BottomViewController: UIViewController {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var lastPostLabel: UILabel!
     
-    @IBOutlet weak var unsubscribeButton: UIButton!
+    @IBOutlet weak var stackView: UIStackView!
     var closeClosure: (()->Void) = {}
     
     @IBOutlet weak var closeButton: UIButton!
@@ -31,10 +31,19 @@ class BottomViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-
+//        view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+//        view.layer.cornerRadius = 14
         // Do any additional setup after loading the view.
     }
     
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        stackView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        stackView.layer.cornerRadius = 14
+        stackView.backgroundColor = .red
+        stackView.clipsToBounds = true
+    }
 
     
 

@@ -10,7 +10,7 @@ import UIKit
 import Foundation
 
 
-struct Group {
+public struct Group {
     var name: String
     var id: Int
     var description: String
@@ -20,4 +20,5 @@ struct Group {
     var friends: Int?
     var lastPost: Date?
     var deactivated: String?
+    var image: UIImage?
 }

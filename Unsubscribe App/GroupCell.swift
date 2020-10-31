@@ -135,9 +135,11 @@ class GroupCell: UICollectionViewCell {
         selectView.frame = CGRect(x: -5, y: -5, width: w2, height: w2)
         selectView.layer.cornerRadius = w2 / 2
         
+        let h = width / 4
         
-        checkerView.frame = CGRect(x: width - 25, y: width - 30, width: 26, height: 26)
-        checkerView.layer.cornerRadius = 13
+        
+        checkerView.frame = CGRect(x: width - 25, y: width - 30, width: h, height: h)
+        checkerView.layer.cornerRadius = 14.5
         
         labelView.frame = CGRect(x: 0, y: 114, width: width, height: 36)
     }
