@@ -431,6 +431,7 @@ extension ViewController: VKSdkDelegate, VKSdkUIDelegate {
     func vkSdkAccessAuthorizationFinished(with result: VKAuthorizationResult!) {
         if ((result.token) != nil) {
             print(result.token!)
+            self.auth()
         } else if ((result.error) != nil) {
             return
         }
