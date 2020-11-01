@@ -22,6 +22,9 @@
 		95745C22254D5F3E00548A6F /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95745C21254D5F3B00548A6F /* PageViewController.swift */; };
 		95FF9816254D70330018ACF9 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FF9815254D70330018ACF9 /* SecondViewController.swift */; };
 		95FF9819254DB4AD0018ACF9 /* MainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FF9818254DB4AD0018ACF9 /* MainCell.swift */; };
+		95FF9824254E6F920018ACF9 /* SFProDisplay-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 95FF9821254E6F910018ACF9 /* SFProDisplay-Medium.ttf */; };
+		95FF9825254E6F920018ACF9 /* SFProDisplay-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 95FF9822254E6F910018ACF9 /* SFProDisplay-Regular.ttf */; };
+		95FF9826254E6F920018ACF9 /* SFProDisplay-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 95FF9823254E6F910018ACF9 /* SFProDisplay-Semibold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +45,9 @@
 		95745C21254D5F3B00548A6F /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		95FF9815254D70330018ACF9 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		95FF9818254DB4AD0018ACF9 /* MainCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCell.swift; sourceTree = "<group>"; };
+		95FF9821254E6F910018ACF9 /* SFProDisplay-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Medium.ttf"; sourceTree = SOURCE_ROOT; };
+		95FF9822254E6F910018ACF9 /* SFProDisplay-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Regular.ttf"; sourceTree = SOURCE_ROOT; };
+		95FF9823254E6F910018ACF9 /* SFProDisplay-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Semibold.ttf"; sourceTree = SOURCE_ROOT; };
 		AB2489B8BEE58262001FBFCE /* Pods-Unsubscribe App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unsubscribe App.release.xcconfig"; path = "Target Support Files/Pods-Unsubscribe App/Pods-Unsubscribe App.release.xcconfig"; sourceTree = "<group>"; };
 		F0F3D3B8642023668968A902 /* libPods-Unsubscribe App.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Unsubscribe App.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -79,6 +85,7 @@
 		95175E22240BC52F005A778A /* Unsubscribe App */ = {
 			isa = PBXGroup;
 			children = (
+				95FF9820254E6F410018ACF9 /* font */,
 				95175E23240BC52F005A778A /* AppDelegate.swift */,
 				95175E25240BC52F005A778A /* SceneDelegate.swift */,
 				95175E27240BC52F005A778A /* ViewController.swift */,
@@ -96,6 +103,16 @@
 				95FF9818254DB4AD0018ACF9 /* MainCell.swift */,
 			);
 			path = "Unsubscribe App";
+			sourceTree = "<group>";
+		};
+		95FF9820254E6F410018ACF9 /* font */ = {
+			isa = PBXGroup;
+			children = (
+				95FF9821254E6F910018ACF9 /* SFProDisplay-Medium.ttf */,
+				95FF9822254E6F910018ACF9 /* SFProDisplay-Regular.ttf */,
+				95FF9823254E6F910018ACF9 /* SFProDisplay-Semibold.ttf */,
+			);
+			path = font;
 			sourceTree = "<group>";
 		};
 		9D839EFAF876A59A647B5F49 /* Pods */ = {
@@ -176,7 +193,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				95175E30240BC532005A778A /* LaunchScreen.storyboard in Resources */,
+				95FF9826254E6F920018ACF9 /* SFProDisplay-Semibold.ttf in Resources */,
+				95FF9824254E6F920018ACF9 /* SFProDisplay-Medium.ttf in Resources */,
 				95175E2D240BC532005A778A /* Assets.xcassets in Resources */,
+				95FF9825254E6F920018ACF9 /* SFProDisplay-Regular.ttf in Resources */,
 				95175E2B240BC52F005A778A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -75,7 +75,8 @@ class GroupCell: UICollectionViewCell {
         let view = UILabel()
         
         view.numberOfLines = 3
-        view.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+        view.font = UIFont(name: "SFProDisplay-Regular", size: 14)
+//        view.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         
         view.adjustsFontSizeToFitWidth = true
         view.minimumScaleFactor = 0.2

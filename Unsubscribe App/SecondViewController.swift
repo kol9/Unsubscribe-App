@@ -167,7 +167,7 @@ extension SecondViewController: UITableViewDataSource {
                         self.data.remove(at: indexPath.row)
                         self.text.remove(at: indexPath.row)
                         tableView.deleteRows(at: [indexPath], with: .automatic)
-                        
+                        tableView.reloadData()
 //                        self.children[0].view.removeFromSuperview()
 //                        self.children[0].didMove(toParent: self)
                         self.removeSpinner()
