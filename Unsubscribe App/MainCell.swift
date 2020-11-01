@@ -25,11 +25,8 @@ class MainCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        
         groupLogo.backgroundColor = .red
         groupNameLabel.text = "YOYOYO"
-        // Initialization code
     }
     @IBAction func buttonTapped(_ sender: Any) {
         onTap()

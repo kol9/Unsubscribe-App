@@ -31,9 +31,6 @@ class BottomViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-//        view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-//        view.layer.cornerRadius = 14
-        // Do any additional setup after loading the view.
     }
     
     

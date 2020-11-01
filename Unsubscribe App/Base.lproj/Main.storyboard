@@ -333,10 +333,10 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KCA-va-ym4">
-                                                <rect key="frame" x="375" y="14" width="25" height="25"/>
+                                                <rect key="frame" x="375" y="14" width="28" height="28"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="25" id="P0P-Gy-5cF"/>
-                                                    <constraint firstAttribute="width" constant="25" id="gCZ-hv-h26"/>
+                                                    <constraint firstAttribute="height" constant="28" id="P0P-Gy-5cF"/>
+                                                    <constraint firstAttribute="width" constant="28" id="gCZ-hv-h26"/>
                                                 </constraints>
                                                 <color key="tintColor" systemColor="systemGray2Color"/>
                                                 <state key="normal">
@@ -356,11 +356,11 @@
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstItem="KCA-va-ym4" firstAttribute="top" secondItem="KtM-IG-fL5" secondAttribute="top" constant="14" id="3HV-v0-ja4"/>
-                                            <constraint firstAttribute="bottom" secondItem="KCA-va-ym4" secondAttribute="bottom" constant="14" id="Quc-M1-ef6"/>
+                                            <constraint firstAttribute="bottom" secondItem="KCA-va-ym4" secondAttribute="bottom" constant="11" id="Quc-M1-ef6"/>
                                             <constraint firstItem="m8c-ux-7so" firstAttribute="top" secondItem="KtM-IG-fL5" secondAttribute="top" constant="16" id="Z2k-2n-xYL"/>
                                             <constraint firstAttribute="trailing" secondItem="m8c-ux-7so" secondAttribute="trailing" constant="52" id="dH8-3M-yzy"/>
                                             <constraint firstItem="m8c-ux-7so" firstAttribute="leading" secondItem="KtM-IG-fL5" secondAttribute="leading" constant="16" id="iZX-VC-vFb"/>
-                                            <constraint firstAttribute="trailing" secondItem="KCA-va-ym4" secondAttribute="trailing" constant="14" id="ukZ-yJ-KnC"/>
+                                            <constraint firstAttribute="trailing" secondItem="KCA-va-ym4" secondAttribute="trailing" constant="11" id="ukZ-yJ-KnC"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DuF-40-smr">

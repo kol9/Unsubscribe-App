@@ -23,6 +23,9 @@ class ViewController: UIViewController {
     let loader = ImageLoader()
     
     
+    
+    let groupQueue = DispatchQueue(label: "groupUpd", qos: .userInitiated, attributes: .concurrent, autoreleaseFrequency: .inherit)
+    
     var groupOpenID = 0
     
     var isEditMode = false
@@ -31,8 +34,6 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var unsubscribeButton: UIButton!
     
-//    var data: [Group] = []
-    
     private let spacing: CGFloat = 12
     
     @IBOutlet weak var collectionView: UICollectionView!
@@ -40,11 +41,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var pickedGroupCounter: UILabel!
     
     
-//    var runningRequests: Set<VKRequest> = []
-    
-    
     func getGroups() {
-//        data = []
         var dataCopy: [Group] = []
         guard let currentUserId = VKSdk.accessToken()?.userId else {
             return
@@ -57,6 +54,7 @@ class ViewController: UIViewController {
          banned — сообщество заблокировано;
          */
         
+        
         let req = VKApi.request(withMethod: "groups.get", andParameters: [
             "user_id": currentUserId,
             "extended" : "1",
@@ -68,9 +66,8 @@ class ViewController: UIViewController {
         req?.execute(resultBlock: { [self]
             result in
             
-            
+            print(Thread.current)
             let arr = result?.json as! NSDictionary
-//            print(arr)
             
             guard let groupsCount = arr["count"] as? Int else {
                 return
@@ -120,9 +117,11 @@ class ViewController: UIViewController {
                 
             }
             globalGroups = dataCopy
-            self.removeSpinner()
-            refreshControl.endRefreshing()
-            self.collectionView.reloadData()
+            DispatchQueue.main.async {
+                self.removeSpinner()
+                refreshControl.endRefreshing()
+                self.collectionView.reloadData()
+            }
         }, errorBlock: {
             error in
             print("error",error)
@@ -140,34 +139,27 @@ class ViewController: UIViewController {
             "filter" : "friends",
             "count": 0
         ])
-//        self.runningRequests.insert(req!)
         
         if globalGroups.count <= index {
-//            self.runningRequests.remove(req!)
             return
         }
         
         if globalGroups[index].friends != nil {
-//            self.runningRequests.remove(req!)
             return
         }
         
         req?.execute(resultBlock: { result in
             let dict = result?.json as! NSDictionary
             guard let friends = dict["count"] as? Int else {
-//                self.runningRequests.remove(req!)
                 return
             }
             if globalGroups.count <= index {
-//                self.runningRequests.remove(req!)
                 return
             }
             globalGroups[index].friends = friends
             print("friends: \(friends)")
-//            self.runningRequests.remove(req!)
         }, errorBlock: {
             error in
-//            self.runningRequests.remove(req!)
             print("error \(id)",error)
         })
     }
@@ -180,39 +172,31 @@ class ViewController: UIViewController {
             "count": 1
         ])
         
-//        self.runningRequests.insert(req!)
         
         if globalGroups.count <= index {
-//            self.runningRequests.remove(req!)
             return
         }
         
         if globalGroups[index].lastPost != nil {
-//            self.runningRequests.remove(req!)
             return
         }
         
         req?.execute(resultBlock: { result in
             let dict = result?.json as! NSDictionary
-//            print(dict)
             guard let arr = dict["items"] as? NSArray else {
-//                self.runningRequests.remove(req!)
                 return
             }
             
             if arr.count == 0 {
-//                self.runningRequests.remove(req!)
                 return
             }
             
             guard let post = arr[0] as? NSDictionary else {
-//                self.runningRequests.remove(req!)
                 return
             }
             
             
             guard let lastPost = post["date"] as? Int else {
-//                self.runningRequests.remove(req!)
                 return
             }
             
@@ -220,10 +204,8 @@ class ViewController: UIViewController {
             let date = Date(timeIntervalSince1970: TimeInterval(lastPost))
             print("int: \(lastPost) date: \(date), index: \(index), id: \(id)")
             globalGroups[index].lastPost = date
-//            self.runningRequests.remove(req!)
         }, errorBlock: {
             error in
-//            self.runningRequests.remove(req!)
             print("error \(id)",error)
         })
     }
@@ -232,7 +214,9 @@ class ViewController: UIViewController {
         VKSdk.wakeUpSession(scope, complete: {(state: VKAuthorizationState, error: Error?) in
             if state == .authorized {
                 print("Authorized and ready to go ")
-                self.getGroups()
+                self.groupQueue.async {
+                    self.getGroups()
+                }
             } else if error == nil{
                 VKSdk.authorize(self.scope)
             } else {
@@ -256,17 +240,10 @@ class ViewController: UIViewController {
         collectionView.register(GroupCell.self, forCellWithReuseIdentifier: "groupCell")
         collectionView.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 100, right: 0)
         
-//        let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         
-        // this is the replacement of implementing: "collectionView.addSubview(refreshControl)"
         collectionView.refreshControl = refreshControl
-        //        let rec = UITapGestureRecognizer(target: self, action: #selector(upd))
-//        self.view.addGestureRecognizer(rec)
         
-        
-//        showSpinner(onView: self.view)
-//        cancelButton.addTarget(self, action:#selector(cancelEditing), for: .touchUpInside)
         unsubscribeButton.addTarget(self, action: #selector(unsubscribe), for: .touchUpInside)
         longPressGR = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(longPressGR:)))
         longPressGR.minimumPressDuration = 0.3
@@ -277,11 +254,8 @@ class ViewController: UIViewController {
         
         editModeFinished()
         
-//        self.showSpinner(onView: self.view)
-        auth()
+        self.auth()
         refreshControl.beginRefreshing()
-//        refresh(refreshControl: refreshControl)
-    
     }
     
     
@@ -289,25 +263,9 @@ class ViewController: UIViewController {
     @objc func refresh(refreshControl: UIRefreshControl) {
         print("Refresh")
         
-        struct Holder {
-            static var timesCalled = 0
+        groupQueue.async {
+            self.getGroups()
         }
-        
-        
-        
-        if Holder.timesCalled != 0 {
-//            for req in runningRequests {
-//                req.cancel()
-//            }
-        }
-        
-//        runningRequests = []
-//        let q = DispatchQueue.global(qos: .userInitiated)
-//        q.async {
-        self.getGroups()
-//        }
-        
-        Holder.timesCalled = 1
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -331,11 +289,6 @@ class ViewController: UIViewController {
         self.children[0].view.removeFromSuperview()
         self.children[0].didMove(toParent: self)
         self.showSpinner(onView: self.view)
-//        refreshControl.st
-        
-//        for req in runningRequests {
-//            req.cancel()
-//        }
         
         var cnt = 0
         DispatchQueue.global().async {
@@ -356,7 +309,6 @@ class ViewController: UIViewController {
         
         DispatchQueue.global().async {
             while(true) {
-//                sleep(100)
                 if cnt == 1 {
                     break
                 }
@@ -364,22 +316,18 @@ class ViewController: UIViewController {
             DispatchQueue.main.async {
                 self.children[0].view.removeFromSuperview()
                 self.children[0].didMove(toParent: self)
-                self.getGroups()
-//                self.refreshControl.beginRefreshing()
+                self.groupQueue.async {
+                    self.getGroups()
+                }
             }
             
-            
-//            self.getGroups()
         }
     }
     
     @objc func unsubscribe() {
         self.editView.isHidden = true
         self.showSpinner(onView: self.view)
-    
-//        for req in runningRequests {
-//            req.cancel()
-//        }
+
         
         if selectedCells.count == 0 {
             self.refreshControl.beginRefreshing()
@@ -409,18 +357,17 @@ class ViewController: UIViewController {
         
         DispatchQueue.global().async {
             while(true) {
-//                sleep(100)
                 if cnt == self.selectedCells.count {
                     break
                 }
             }
             DispatchQueue.main.async {
-//                self.refreshControl.beginRefreshing()
-                self.getGroups()
+                self.groupQueue.async {
+                    self.getGroups()
+                }
                 self.editModeFinished()
             }
             
-//            self.getGroups()
         }
     }
     
@@ -430,7 +377,6 @@ class ViewController: UIViewController {
         editView.isHidden = false
         isEditMode = true
         collectionView.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 150, right: 0)
-//        collectionView.isEditing = true
     }
     
     
@@ -449,7 +395,6 @@ class ViewController: UIViewController {
         editView.isHidden = true
         isEditMode = false
         collectionView.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 100, right: 0)
-//        collectionView.isEditing = false
         collectionView.reloadData()
     }
     
@@ -464,14 +409,10 @@ class ViewController: UIViewController {
             if indexPath.section == 0 {
                 
             } else {
-                
-//                let impactFeedbackgenerator = UIImpactFeedbackGenerator(style: .medium)
-//                impactFeedbackgenerator.prepare()
-//                impactFeedbackgenerator.impactOccurred()
+
             
                 let cell = cell as! GroupCell
                 selectedCells.insert(indexPath)
-//                cell.isPicked = true
                 
                 pickedGroupCounter.text = "\(selectedCells.count)"
                 
@@ -585,21 +526,29 @@ extension ViewController: UICollectionViewDataSource {
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "groupCell", for: indexPath) as! GroupCell
             
-//            cell.isUserInteractionEnabled = true
             let group = globalGroups[indexPath.item]
             cell.setTitle(globalGroups[indexPath.item].name)
             
-            let q = DispatchQueue(label: "q", attributes: .concurrent)
-            q.async {
+            
+            
+            let queue = DispatchQueue(label: "unitity", qos: .utility, attributes: .concurrent, autoreleaseFrequency: .inherit)
+            
+            queue.async {
                 self.getLastPost(id: group.id, index: indexPath.item)
-            }
-            
-            
-            let q2 =  DispatchQueue(label: "q2", attributes: .concurrent)
-
-            q2.async {
                 self.getFriends(id: group.id, index: indexPath.item)
             }
+            
+//            let q = DispatchQueue(label: "q", attributes: .concurrent)
+//            q.async {
+//
+//            }
+//
+//
+//            let q2 =  DispatchQueue(label: "q2", attributes: .concurrent)
+//
+//            q2.async {
+//                self.getFriends(id: group.id, index: indexPath.item)
+//            }
             
             let url = URL(string: globalGroups[indexPath.item].imageURL)
             let token = self.loader.loadImage(url!) { result in
@@ -679,7 +628,6 @@ extension ViewController: UICollectionViewDataSource {
             
             groupOpenID = globalGroups[indexPath.item].id
             vc.openButton.addTarget(self, action: #selector(openGroup), for: .touchUpInside)
-//            vc.unsubscribeButton.addTarget(self, action: #selector(singleUnsubscribe), for: .touchUpInside)
             
             children[0].didMove(toParent: self)
             print(indexPath.item)
@@ -688,9 +636,7 @@ extension ViewController: UICollectionViewDataSource {
             if indexPath.section == 0 {
                 
             } else {
-//                collectionView.isEditing = true
                 let cell = cell as! GroupCell
-//                AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
                 
                 let impactFeedbackgenerator = UIImpactFeedbackGenerator(style: .medium)
                 impactFeedbackgenerator.prepare()

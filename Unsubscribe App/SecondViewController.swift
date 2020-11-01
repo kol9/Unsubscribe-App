@@ -47,7 +47,6 @@ class SecondViewController: UIViewController {
                 
                 if let lastPost = group.lastPost {
                     let diff = Date().timeIntervalSince(lastPost)
-//                    let diff: TimeInterval = Date() - lastPost
                     let time = Int(diff)
                     let years = (time / 3600) / 24 / 365
                     if years > 1 {
@@ -70,19 +69,16 @@ class SecondViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
-//        tableView.delegate = self
         tableView.separatorStyle = .none
         self.tableView.rowHeight = UITableView.automaticDimension
         self.tableView.estimatedRowHeight = 136;
         tableView.contentInset = UIEdgeInsets(top: 15, left: 0, bottom: 0, right: 0)
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         tableView.refreshControl = refreshControl
-        // Do any additional setup after loading the view.
     }
     
     
     @objc func refresh() {
-//        refreshControl.beginRefreshing()
         let bad = badGroups
         data = bad.0
         data = bad.0
@@ -91,16 +87,6 @@ class SecondViewController: UIViewController {
         refreshControl.endRefreshing()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         let bad = badGroups
@@ -168,15 +154,8 @@ extension SecondViewController: UITableViewDataSource {
                         self.text.remove(at: indexPath.row)
                         tableView.deleteRows(at: [indexPath], with: .automatic)
                         tableView.reloadData()
-//                        self.children[0].view.removeFromSuperview()
-//                        self.children[0].didMove(toParent: self)
                         self.removeSpinner()
-//                        self.getGroups()
-        //                self.refreshControl.beginRefreshing()
                     }
-                    
-                    
-        //            self.getGroups()
                 }
             }
             
@@ -207,9 +186,7 @@ extension SecondViewController: UITableViewDataSource {
 
             var str = ""
             
-//            print(text)
             for s in text[indexPath.row] {
-//                print(s)
                 str += s
                 str += "\n"
             }
